@@ -13,7 +13,71 @@ const rl = readline.createInterface({
 
 const pigLatin = (word) => {
 
-  // Your code here
+  word = word.toLowerCase().trim();
+  //console.log("trim and lowercase = " + word);
+  
+  let howBig = word.length;
+  let vowelPosition = 0;
+  let vowelA = word.includes("a");
+  let vowelE = word.includes("e");
+  let vowelI = word.includes("i");
+  let vowelO = word.includes("o");
+  let vowelU = word.includes("u"); 
+
+  let vowelArray = [];
+
+  if(vowelA){
+    vowelPosition = word.search("a");
+    vowelArray[0] = vowelPosition;
+    //console.log("vowel position=" + vowelPosition);
+    //console.log("array 0 =" + vowelArray[0]);
+  }
+  if(vowelE){
+    vowelPosition = word.search("e");
+    vowelArray[1] = vowelPosition;
+    //console.log("vowel position=" + vowelPosition);
+    //console.log("array 1 =" + vowelArray[1]);
+  }
+  if(vowelI){
+    vowelPosition = word.search("i");
+    vowelArray[2] = vowelPosition;
+    //console.log("vowel position=" + vowelPosition);
+    //console.log("array 2 =" + vowelArray[2]);
+  }else if(vowelO){
+    vowelPosition = word.search("o");
+    vowelArray[3] = vowelPosition;
+    //console.log("vowel position=" + vowelPosition);
+    //console.log("array 3 =" + vowelArray[3]);
+  }
+  if(vowelU){
+    vowelPosition = word.search("u");
+    vowelArray[4] = vowelPosition;
+    //console.log("vowel position=" + vowelPosition);
+    //console.log("array 4 =" + vowelArray[4]);
+  }
+
+//console.log("vowel position=" + vowelPosition);
+if(vowelPosition == 0){ 
+  let startVowel = "yay"
+  return (word + startVowel);
+}
+
+  for(let i=0; i<5; i++){
+    if(vowelArray[i] > 0){
+      if(vowelArray[i] < vowelPosition){
+        vowelPosition = vowelArray[i];
+      }
+    }
+  }
+
+  
+  
+  let firstPartOfWord = word.substring(vowelPosition, howBig);
+  let secondPartOfWord = word.substring(0,vowelPosition);
+  let lastPartOfWord = "ay";
+
+  return firstPartOfWord + secondPartOfWord + lastPartOfWord;
+
 
 }
 

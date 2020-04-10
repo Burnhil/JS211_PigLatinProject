@@ -13,65 +13,32 @@ const rl = readline.createInterface({
 
 const pigLatin = (word) => {
 
+  //trim and set work to lowercase
   word = word.toLowerCase().trim();
   //console.log("trim and lowercase = " + word);
   
+  //variables/array to be used
   let howBig = word.length;
-  let vowelPosition = 0;
-  let vowelA = word.includes("a");
-  let vowelE = word.includes("e");
-  let vowelI = word.includes("i");
-  let vowelO = word.includes("o");
-  let vowelU = word.includes("u"); 
+  let vowelPosition = 100;
+  let vowelArray = [ "a", "e", "i", "o", "u"];
 
-  let vowelArray = [];
-
-  if(vowelA){
-    vowelPosition = word.search("a");
-    vowelArray[0] = vowelPosition;
-    //console.log("vowel position=" + vowelPosition);
-    //console.log("array 0 =" + vowelArray[0]);
-  }
-  if(vowelE){
-    vowelPosition = word.search("e");
-    vowelArray[1] = vowelPosition;
-    //console.log("vowel position=" + vowelPosition);
-    //console.log("array 1 =" + vowelArray[1]);
-  }
-  if(vowelI){
-    vowelPosition = word.search("i");
-    vowelArray[2] = vowelPosition;
-    //console.log("vowel position=" + vowelPosition);
-    //console.log("array 2 =" + vowelArray[2]);
-  }else if(vowelO){
-    vowelPosition = word.search("o");
-    vowelArray[3] = vowelPosition;
-    //console.log("vowel position=" + vowelPosition);
-    //console.log("array 3 =" + vowelArray[3]);
-  }
-  if(vowelU){
-    vowelPosition = word.search("u");
-    vowelArray[4] = vowelPosition;
-    //console.log("vowel position=" + vowelPosition);
-    //console.log("array 4 =" + vowelArray[4]);
+  //loop array to find lowest vowel position
+  for(let i = 0; i <= vowelArray.length -1; i++){
+    let index = word.indexOf(vowelArray[i]);
+    if(index >= 0 && index < vowelPosition){
+      vowelPosition = index;
+    }
   }
 
 //console.log("vowel position=" + vowelPosition);
+
+//if vowel is first of word postition 0 just add yay & return
 if(vowelPosition == 0){ 
   let startVowel = "yay"
   return (word + startVowel);
 }
 
-  for(let i=0; i<5; i++){
-    if(vowelArray[i] > 0){
-      if(vowelArray[i] < vowelPosition){
-        vowelPosition = vowelArray[i];
-      }
-    }
-  }
-
-  
-  
+  //if vowel is not first seperate word and reform then return
   let firstPartOfWord = word.substring(vowelPosition, howBig);
   let secondPartOfWord = word.substring(0,vowelPosition);
   let lastPartOfWord = "ay";

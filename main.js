@@ -48,6 +48,8 @@ if(vowelPosition == 0){
 
 }
 
+
+
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
 // to close it ctrl + C
@@ -57,6 +59,7 @@ const getPrompt = () => {
     getPrompt();
   });
 }
+
 
 // Unit Tests
 // You use them run the command: npm test main.js
@@ -86,9 +89,6 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
-
-
-
 
 
 
